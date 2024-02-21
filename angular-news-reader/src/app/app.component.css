@@ -1,0 +1,33 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }  
+  body {
+    background: linear-gradient(to right, #f0f0f0, #e0e0e0);
+  }
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+  h1 {
+    font-size: 2rem;
+    color: var(--bright-blue);
+    margin-bottom: 1rem;
+  }
+  p {
+    margin: 0;
+    color: var(--gray-700);
+  }
+  header {
+    background: var(--bright-blue);
+    padding: 1rem;
+    text-align: center;
+    color: white;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin: 0;
+  }
+  

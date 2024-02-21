@@ -1,0 +1,35 @@
+<form [formGroup]="searchForm">
+    <label>
+      Text:
+      <input type="text" formControlName="text">
+    </label>
+    <label>
+      Sources (comma-separated):
+      <input type="text" formControlName="sources">
+    </label>
+    <label>
+      Domains (comma-separated):
+      <input type="text" formControlName="domains">
+    </label>
+    <label>
+      From Date:
+      <input type="date" formControlName="fromDate">
+    </label>
+    <label>
+      To Date:
+      <input type="date" formControlName="toDate">
+    </label>
+    <label>
+      Page:
+      <input type="number" formControlName="page">
+    </label>
+    <button (click)="getArticles()">Get Articles</button>
+  </form>
+  
+  <div class="card" *ngFor="let article of articles">
+    <div class="card-body">
+      <h5 class="card-title">{{ article.title }}</h5>
+      <p class="card-text">{{ article.author }}</p>
+      <a href="{{ article.url }}" class="btn btn-primary">Go to article</a>
+    </div>
+  </div>
