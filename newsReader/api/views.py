@@ -19,6 +19,30 @@ def getLatestNews(request):
     except Exception as e:
         return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+@api_view(['GET'])  # Only accept GET requests
+def queryNewsAPI(request):
+    try:
+        # Query parameters
+        q = request.GET.get('q')
+        sources = request.GET.get('sources')
+        domains = request.GET.get('domains')
+        from_param = request.GET.get('from')
+        to = request.GET.get('to')
+        sortBy = request.GET.get('sortBy')
+        # Fetch news articles from the news API
+        data = services.query_news_api(
+            q=q,
+            sources=sources,
+            domains=domains,
+            from_param=from_param,
+            to=to,
+            sortBy=sortBy
+        )
+        services.updateDB(data)
+        return Response(data, status=status.HTTP_200_OK)
+    except Exception as e:
+        return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 @api_view(['GET'])  # only accept GET requests
 def getAllNews(request):

@@ -7,6 +7,7 @@ class Article(models.Model):
     source_name = models.CharField(max_length=100)
     published_at = models.DateTimeField()
     url = models.URLField()
+    queried_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
