@@ -8,7 +8,10 @@ from django.http import JsonResponse
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.views.decorators.cache import cache_page
 
+
+@cache_page(60 * 10)  # Cache the response for 10 minutes
 @api_view(['GET'])  # Only accept GET requests
 def getLatestNews(request):
     """
@@ -29,6 +32,7 @@ def getLatestNews(request):
         return Response(data, status=status.HTTP_200_OK)
     except Exception as e:
         return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 @api_view(['GET'])  # Only accept GET requests
 def queryNewsAPI(request):
@@ -65,6 +69,7 @@ def queryNewsAPI(request):
         return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
+@cache_page(60 * 5)  # Cache the response for 5 minutes
 @api_view(['GET'])  # only accept GET requests
 def getAllNews(request):
     """
