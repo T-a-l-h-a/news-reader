@@ -40,6 +40,12 @@
   <button (click)="refreshArticles()">Update latest articles</button>
 </div>
 
+<div class="arrow-container">
+  <h3>Page buttons</h3>
+  <button (click)="getPreviousPage()"><-</button>
+  <button (click)="getNextPage()">-></button>
+</div>
+
 <div class="card-container">
   <div class="card" *ngFor="let article of articles">
     <div class="card-body">

@@ -69,7 +69,6 @@ def queryNewsAPI(request):
         return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-@cache_page(60 * 5)  # Cache the response for 5 minutes
 @api_view(['GET'])  # only accept GET requests
 def getAllNews(request):
     """
@@ -106,7 +105,7 @@ def getAllNews(request):
             query &= Q(published_at__lte=to)
         # Fetch all news from the database and filter by the query
         # News is displayed by the most recently added to the DB first
-        articles = Article.objects.filter(query).order_by('-id')
+        articles = Article.objects.filter(query).order_by('-queried_at')
         # Paginate the articles
         paginator = Paginator(articles, 50)  # 50 articles per page
         page_number = request.GET.get('page')

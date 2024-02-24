@@ -13,6 +13,10 @@ import { DialogContentExampleDialog } from '../article-reader/article-reader.com
   templateUrl: './article-list.component.html',
   styleUrls: ['./article-list.component.css']
 })
+/**
+ * Represents the component responsible for displaying a list of articles.
+ * This component handles the retrieval, filtering, and display of articles.
+ */
 export class ArticleListComponent implements OnInit {
   articles: Article[] = []; // Array to store the articles
   searchForm = new FormGroup({ // Form group for search filters
@@ -33,6 +37,7 @@ export class ArticleListComponent implements OnInit {
 
   /**
    * Retrieves the articles based on the search filters.
+   * The retrieved articles are stored in the 'articles' property.
    */
   getArticles() {
     const formValue = this.searchForm.value;
@@ -63,6 +68,7 @@ export class ArticleListComponent implements OnInit {
 
   /**
    * Queries the articles based on the search filters.
+   * The retrieved articles are stored in the 'articles' property.
    * After querying, the page is reloaded after a delay of 1 second.
    */
   queryArticles() {
@@ -93,6 +99,28 @@ export class ArticleListComponent implements OnInit {
       width: '80%',
       data: { url: article.url }
     });
+  }
+
+  /**
+   * Retrieves the next page of articles based on the current search filters.
+   * The page number is incremented by 1 and the articles are updated accordingly.
+   */
+  getNextPage() {
+    const formValue = this.searchForm.value;
+    const page = formValue.page ? parseInt(formValue.page) : 1;
+    this.searchForm.patchValue({ page: (page + 1).toString() });
+    this.getArticles();
+  }
+
+  /**
+   * Retrieves the previous page of articles based on the current search filters.
+   * The page number is decremented by 1 and the articles are updated accordingly.
+   */
+  getPreviousPage() {
+    const formValue = this.searchForm.value;
+    const page = formValue.page ? parseInt(formValue.page) : 1;
+    this.searchForm.patchValue({ page: (page - 1).toString() });
+    this.getArticles();
   }
 
 }
