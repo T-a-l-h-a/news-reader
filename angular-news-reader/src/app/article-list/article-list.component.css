@@ -5,8 +5,38 @@
     width: 90%; /* Make the card wider */
     text-align: center; /* Centralize the text */
     border-radius: 10px; /* Larger border radius for a softer look */
-    margin: 20px auto; /* Center the card and add vertical space around it */
+    /*margin: 20px auto; /* Center the card and add vertical space around it */
     padding: 20px; /* Add some space inside the card */
+    flex: 1 0 25%; /* grow, shrink, basis */
+    margin: 1%; /* for a little space between the cards */  
+}
+
+.form-container {
+    h2{
+        font-size: 2rem;
+
+        text-align: center;
+    }
+    padding: 20px;
+    border-radius: 50px; /* This creates the bubble effect */
+    border: 2px solid #000; /* This draws the border around the bubble */
+    width: fit-content; /* This makes the div only as wide as its content */
+    margin: 20px auto; /* This centers the div */
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-container label input {
+    display: block;
+    margin-top: 5px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .card:hover {

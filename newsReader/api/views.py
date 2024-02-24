@@ -28,7 +28,6 @@ def queryNewsAPI(request):
         domains = request.GET.get('domains')
         from_param = request.GET.get('from')
         to = request.GET.get('to')
-        sortBy = request.GET.get('sortBy')
         # Fetch news articles from the news API
         data = services.query_news_api(
             q=q,
@@ -36,7 +35,6 @@ def queryNewsAPI(request):
             domains=domains,
             from_param=from_param,
             to=to,
-            sortBy=sortBy
         )
         services.updateDB(data)
         return Response(data, status=status.HTTP_200_OK)
@@ -79,7 +77,8 @@ def getAllNews(request):
         if to:
             query &= Q(published_at__lte=to)
         # Fetch all news from the database and filter by the query
-        articles = Article.objects.filter(query).order_by('-published_at')
+        # News is displayed by the most recently added to the DB first
+        articles = Article.objects.filter(query).order_by('-id')
         # Paginate the articles
         paginator = Paginator(articles, 50)  # 50 articles per page
         page_number = request.GET.get('page')

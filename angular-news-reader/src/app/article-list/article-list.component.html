@@ -1,4 +1,6 @@
-<form [formGroup]="searchForm">
+<div class="form-container">
+  <h2>Search Parameters</h2>
+  <form [formGroup]="searchForm">
     <label>
       Text:
       <input type="text" formControlName="text">
@@ -23,13 +25,28 @@
       Page:
       <input type="number" formControlName="page">
     </label>
-    <button (click)="getArticles()">Get Articles</button>
+    <label>
+      <!--
+      Sort By:
+      <select formControlName="sortBy">
+        <option value="relevancy">Relevancy</option>
+        <option value="popularity">Popularity</option>
+        <option value="publishedAt">Published At</option>
+      </select>
+      -->
+    </label>
+    <button (click)="queryArticles()">Get Articles</button>
   </form>
-  
+  <button (click)="refreshArticles()">Update Articles</button>
+</div>
+
+<div class="card-container">
   <div class="card" *ngFor="let article of articles">
     <div class="card-body">
+      <img src="https://www.clipartmax.com/png/small/99-998189_include-some-description-article-clipart.png" alt="Article image">
       <h5 class="card-title">{{ article.title }}</h5>
       <p class="card-text">{{ article.author }}</p>
-      <a href="{{ article.url }}" class="btn btn-primary">Go to article</a>
+      <a href="{{ article.url }}" class="btn btn-primary">Read article</a>
     </div>
   </div>
+</div>
