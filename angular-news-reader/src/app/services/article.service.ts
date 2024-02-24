@@ -7,12 +7,17 @@ import { Article } from '../models/article.model';
   providedIn: 'root'
 })
 export class ArticleService {
-  private newsUrl = 'http://127.0.0.1:8000/api/allNews';
-  private refreshUrl = 'http://127.0.0.1:8000/api/bulkUpdate/';
-  private queryUrl = 'http://127.0.0.1:8000/api/queryNewsAPI/';
+  private newsUrl = 'http://127.0.0.1:8000/api/allNews'; // URL for getting all news articles
+  private refreshUrl = 'http://127.0.0.1:8000/api/bulkUpdate/'; // URL for refreshing the news articles
+  private queryUrl = 'http://127.0.0.1:8000/api/queryNewsAPI/'; // URL for querying news articles
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * Get articles based on the provided options.
+   * @param options - Options for filtering the articles (text, sources, domains, fromDate, toDate, page)
+   * @returns Observable<Article[]> - Observable that emits an array of articles
+   */
   getArticles(options?: { text?: string, sources?: string[], domains?: string[], fromDate?: string, toDate?: string, page?: number }): Observable<Article[]> {
     let params = new HttpParams();
     if (options) {
@@ -26,6 +31,11 @@ export class ArticleService {
     return this.http.get<Article[]>(this.newsUrl, { params });
   }
 
+  /**
+   * Query articles based on the provided options.
+   * @param options - Options for querying the articles (text, sources, domains, fromDate, toDate, page)
+   * @returns Observable<Article[]> - Observable that emits an array of articles
+   */
   queryArticles(options?: { text?: string, sources?: string[], domains?: string[], fromDate?: string, toDate?: string, page?: number }): Observable<Article[]> {
     let params = new HttpParams();
     if (options) {
@@ -40,10 +50,19 @@ export class ArticleService {
     return this.http.get<Article[]>(this.queryUrl, { params });
   }
 
+  /**
+   * Get a single article by its ID.
+   * @param id - ID of the article
+   * @returns Observable<Article> - Observable that emits the article
+   */
   getArticle(id: number): Observable<Article> {
     return this.http.get<Article>(`${this.newsUrl}/${id}`);
   }
 
+  /**
+   * Update all articles by refreshing them.
+   * @returns Observable<Article[]> - Observable that emits an array of updated articles
+   */
   updateArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(this.refreshUrl);
   }

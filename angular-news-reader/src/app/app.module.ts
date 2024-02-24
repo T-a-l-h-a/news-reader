@@ -6,19 +6,41 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleService } from './services/article.service';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ArticleReaderComponent, DialogContentExampleDialog } from './article-reader/article-reader.component';
+import { SafePipe } from './article-reader/safe.pipe';
 
 @NgModule({
   declarations: [
+    // Components
     AppComponent,
-    ArticleListComponent
+    ArticleListComponent,
+    ArticleReaderComponent,
+    DialogContentExampleDialog,
+    // Pipes
+    SafePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
-  providers: [ArticleService],
-  bootstrap: [AppComponent]
+  providers: [
+    // Services
+    ArticleService,
+    // Other providers
+    provideAnimationsAsync()
+  ],
+  bootstrap: [
+    // Root component
+    AppComponent,
+    // Additional component
+    ArticleReaderComponent
+  ],
 })
 export class AppModule { }

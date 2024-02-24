@@ -11,8 +11,19 @@ from django.db.models import Q
 
 @api_view(['GET'])  # Only accept GET requests
 def getLatestNews(request):
+    """
+    Fetches the latest news and updates the database.
+
+    Args:
+        request: The HTTP request object.
+
+    Returns:
+        A Response object with the latest news data or an error message.
+
+    Raises:
+        Exception: If there is an error while fetching or updating the news.
+    """
     try:
-        # Fetches the latest news
         data = services.get_top_news()
         services.updateDB(data)
         return Response(data, status=status.HTTP_200_OK)
@@ -21,6 +32,18 @@ def getLatestNews(request):
 
 @api_view(['GET'])  # Only accept GET requests
 def queryNewsAPI(request):
+    """
+    Fetches news articles from the news API based on the provided query parameters.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        Response: The HTTP response object containing the fetched news articles.
+
+    Raises:
+        Exception: If an error occurs while fetching the news articles.
+    """
     try:
         # Query parameters
         q = request.GET.get('q')
@@ -104,8 +127,17 @@ def getAllNews(request):
 
 @api_view(['GET'])  # Only accept GET requests
 def bulkUpdate(request):
+    """
+    Fetches the latest news from the services module and updates the database with the fetched data.
+
+    Args:
+        request: The HTTP request object.
+
+    Returns:
+        A Response object with the fetched data and a status code of 200 if successful, 
+        or an error message and a status code of 500 if an exception occurs.
+    """
     try:
-        # Fetches the latest news
         for i in range(1, 5):
             data = services.get_top_news(page=i)
             services.updateDB(data)

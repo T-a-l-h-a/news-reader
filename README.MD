@@ -7,6 +7,7 @@ Using Django REST API to fetch news articles that are stored in a PostgreSQL dat
 * Whilst I have a decent amount of experience using Flask, this is my first time working with Django. It has been fun and I expect to be using it more in the future.
 * This is also my first time working with Angular being that the majority of my previous work has been backend-focused. Again, I have found it to be quite fun to learn and look forward to trying out more projects.
 * Sadly, the News API doesn't seem to return a urlToImage field in its' responses. This might only be available under a paid plan but I'm not sure. As such, I have popped a placeholder image in for each article but this would preferably be a relevant image to enhance user experience.
+* A few sources refuse to connect for the internal app reader - this is due to them sending an X-Frame-Options:SAMEORIGIN response header. There is no way around this that I know of other than to just read the article on their website.
 
 ## Table of Contents
 
@@ -68,4 +69,5 @@ This app takes the form of a simple scrollable web page that displays 50 article
 There is a box that takes search parameters.
 
 Please note that due to API limitations, you cannot query articles from more than a month ago.
+
 ![Example Image](newsreader.png)

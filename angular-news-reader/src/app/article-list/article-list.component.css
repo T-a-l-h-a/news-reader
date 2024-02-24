@@ -1,27 +1,25 @@
 .card {
-    background-color: #f3f3f3; /* Light grey background */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.15); /* Less intense shadow */
-    transition: box-shadow 0.3s ease-in-out; /* Smooth transition for shadow */
-    width: 90%; /* Make the card wider */
-    text-align: center; /* Centralize the text */
-    border-radius: 10px; /* Larger border radius for a softer look */
-    /*margin: 20px auto; /* Center the card and add vertical space around it */
-    padding: 20px; /* Add some space inside the card */
-    flex: 1 0 25%; /* grow, shrink, basis */
-    margin: 1%; /* for a little space between the cards */  
+    background-color: #f3f3f3;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    transition: box-shadow 0.3s ease-in-out;
+    width: 90%;
+    text-align: center;
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1 0 25%;
+    margin: 1%;
 }
 
 .form-container {
     h2{
         font-size: 2rem;
-
         text-align: center;
     }
     padding: 20px;
-    border-radius: 50px; /* This creates the bubble effect */
-    border: 2px solid #000; /* This draws the border around the bubble */
-    width: fit-content; /* This makes the div only as wide as its content */
-    margin: 20px auto; /* This centers the div */
+    border-radius: 50px;
+    border: 2px solid #000;
+    width: fit-content;
+    margin: 20px auto;
 }
 
 .form-container label {
@@ -37,30 +35,39 @@
 .card-container {
     display: flex;
     flex-wrap: wrap;
+    align-items: stretch;
 }
 
 .card:hover {
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* More intense shadow on hover */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .card-title {
-    font-size: 1.5em; /* Larger title */
-    margin-bottom: 10px; /* Space below the title */
+    font-size: 1.5em;
+    margin-bottom: 10px;
 }
 
 .card-text {
-    font-size: 1em; /* Standard size text */
-    margin-bottom: 20px; /* Space below the text */
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .btn {
-    background-color: #007BFF; /* Blue background */
-    color: white; /* White text */
-    padding: 10px 20px; /* Vertical and horizontal padding */
-    text-decoration: none; /* Remove underline */
-    border-radius: 5px; /* Rounded corners */
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
 }
 
 .btn:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
 }
