@@ -1,49 +1,52 @@
-<div class="form-container">
-  <h2>Search Parameters</h2>
-  <form [formGroup]="searchForm">
-    <label>
-      Text:
-      <input type="text" formControlName="text">
-    </label>
-    <label>
-      Sources (comma-separated):
-      <input type="text" formControlName="sources">
-    </label>
-    <label>
-      Domains (comma-separated):
-      <input type="text" formControlName="domains">
-    </label>
-    <label>
-      From Date:
-      <input type="date" formControlName="fromDate">
-    </label>
-    <label>
-      To Date:
-      <input type="date" formControlName="toDate">
-    </label>
-    <label>
-      Page:
-      <input type="number" formControlName="page">
-    </label>
-    <label>
-      <!--
-      Sort By:
-      <select formControlName="sortBy">
-        <option value="relevancy">Relevancy</option>
-        <option value="popularity">Popularity</option>
-        <option value="publishedAt">Published At</option>
-      </select>
-      -->
-    </label>
-    <button (click)="queryArticles()">Get articles</button>
-  </form>
-  <button (click)="refreshArticles()">Update latest articles</button>
-</div>
+<div class="settings-container">
+  <div class="form-container">
+    <h2>Search Parameters</h2>
+    <form [formGroup]="searchForm">
+      <label>
+        Text:
+        <input type="text" formControlName="text">
+      </label>
+      <label>
+        Sources (comma-separated):
+        <input type="text" formControlName="sources">
+      </label>
+      <label>
+        Domains (comma-separated):
+        <input type="text" formControlName="domains">
+      </label>
+      <label>
+        From Date:
+        <input type="date" formControlName="fromDate" min="{{ setFormDate().minDate }}" max="{{ setFormDate().maxDate }}">
+      </label>
+      <label>
+        To Date:
+        <input type="date" formControlName="toDate" min="{{ setFormDate().minDate }}" max="{{ setFormDate().maxDate }}">
+      </label>
+      <label>
+        Page:
+        <input type="number" formControlName="page">
+      </label>
+      <label>
+        <!--
+        Sort By:
+        <select formControlName="sortBy">
+          <option value="relevancy">Relevancy</option>
+          <option value="popularity">Popularity</option>
+          <option value="publishedAt">Published At</option>
+        </select>
+        -->
+      </label>
+      <button (click)="queryArticles()">Get articles</button>
+    </form>
+    <button (click)="refreshArticles()">Update latest articles</button>
+  </div>
 
-<div class="arrow-container">
-  <h3>Page buttons</h3>
-  <button (click)="getPreviousPage()"><-</button>
-  <button (click)="getNextPage()">-></button>
+  <div class="arrow-container">
+    <h3>Page buttons</h3>
+    <button (click)="getPreviousPage()"><-</button>
+    <button (click)="getNextPage()">-></button>
+  </div>
+
 </div>
 
 <div class="card-container">

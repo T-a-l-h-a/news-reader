@@ -10,6 +10,11 @@
     margin: 1%;
 }
 
+.settings-container {
+    display: flex;
+    align-items: flex-end;
+}
+
 .form-container {
     h2{
         font-size: 2rem;
@@ -19,7 +24,7 @@
     border-radius: 50px;
     border: 2px solid #000;
     width: fit-content;
-    margin: 20px auto;
+    margin: 20px;
 }
 
 .arrow-container {
@@ -40,7 +45,7 @@
     border-radius: 50px;
     border: 2px solid #000;
     width: fit-content;
-    margin: 20px auto;
+    margin: 20px;
 }
 
 .form-container label {

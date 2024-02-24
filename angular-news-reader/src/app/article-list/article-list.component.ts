@@ -123,4 +123,20 @@ export class ArticleListComponent implements OnInit {
     this.getArticles();
   }
 
+  /**
+   * Sets the form date with a minimum and maximum date.
+   * The minimum date is set to 30 days ago from today,
+   * and the maximum date is set to today.
+   * @returns An object with the minimum and maximum dates in ISO string format.
+   */
+  setFormDate() {
+    const today = new Date();
+    const thirtyDaysAgo = new Date();
+    thirtyDaysAgo.setDate(today.getDate() - 30);
+    return {
+      minDate: thirtyDaysAgo.toISOString().split('T')[0],
+      maxDate: today.toISOString().split('T')[0]
+    };
+  }
+
 }
