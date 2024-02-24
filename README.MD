@@ -64,6 +64,8 @@ You are now free to try out this application!
 ## Usage
 
 This app takes the form of a simple scrollable web page that displays 50 articles per page.
+
 There is a box that takes search parameters.
+
 Please note that due to API limitations, you cannot query articles from more than a month ago.
 ![Example Image](newsreader.png)
