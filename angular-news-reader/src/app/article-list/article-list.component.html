@@ -36,7 +36,11 @@
         </select>
         -->
       </label>
-      <button (click)="queryArticles()">Get articles</button>
+      <label>
+        Quick search?
+        <input type="checkbox" [(ngModel)]="changeBehavior" name="changeBehavior"> <!--Not sure why this isn't working?-->
+      </label>
+        <button (click)="changeBehavior ? queryArticles() : getArticles()">Get articles</button>
     </form>
     <button (click)="refreshArticles()">Update latest articles</button>
   </div>

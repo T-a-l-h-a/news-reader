@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormsModule, FormGroup, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ArticleService } from '../services/article.service';
 import { Article } from '../models/article.model';
@@ -19,6 +19,7 @@ import { DialogContentExampleDialog } from '../article-reader/article-reader.com
  */
 export class ArticleListComponent implements OnInit {
   articles: Article[] = []; // Array to store the articles
+  changeBehavior = true; // Boolean to change the behavior of the 'Get articles' button
   searchForm = new FormGroup({ // Form group for search filters
     text: new FormControl(''), // Text filter
     sources: new FormControl(''), // Sources filter
@@ -138,5 +139,4 @@ export class ArticleListComponent implements OnInit {
       maxDate: today.toISOString().split('T')[0]
     };
   }
-
 }
